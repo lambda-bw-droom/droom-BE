@@ -12,4 +12,6 @@ server.get('/', (req, res) => {
     res.status(200).json('Server is ALIVE!')
 });
 
+server.use('/auth', authRouter)
+
 module.exports = server;
