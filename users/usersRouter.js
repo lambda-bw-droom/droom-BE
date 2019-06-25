@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const UsersModel = require('./usersModel.js');
-
+const restrict = require('../authorization.js')
 
 router.get('/', (req, res) => {
     UsersModel.getUsers()
