@@ -1,5 +1,10 @@
 exports.up = function(knex, Promise) {
-    return knex.schema.createTable('users', tbl => {
+    return knex.schema.createTable('niche', tbl => {
+        tbl.increments();
+        tbl.string('niche').notNullable();
+    }) 
+    
+    .createTable('users', tbl => {
         tbl.increments();
         tbl.string('username').notNullable().unique();
         tbl.string('password').notNullable();
@@ -30,11 +35,6 @@ exports.up = function(knex, Promise) {
         .inTable('niche')
         .onDelete('CASCADE')
         .onUpdate('CASCADE')
-    })
-
-    .createTable('niche', tbl => {
-        tbl.increments();
-        tbl.string('niche').notNullable();
     })
 
     .createTable('jobs', tbl => {
