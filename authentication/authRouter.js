@@ -9,6 +9,7 @@ router.post('/register', (req, res) => {
     if(!user.password || !user.username) {
         return res.status(400).json({error: 'Requires both username and password for register'})
     }
+    // filter out already register user, "user with username exists"
     const hash = bcrypt.hashSync(user.password, 10)
     user.password = hash;
     console.log(user)
@@ -27,11 +28,33 @@ router.post('/register', (req, res) => {
      .catch(err => {
          console.log(err)
          res.status(500).json({
-             error: '500 error'
+             error: '500 internal server error'
          })
      })
 
 });
+
+router.post('/login', (req, res) => {
+    let {username, password} = req.body;
+
+    AuthModel.findBy({username})
+    .first()
+    .then(user => {
+        if (user && bcrypt.compareSync(password, user.password)) {
+            const token = makeToken(user)
+
+            res.status(200).json({
+                message: `Welcome ${user.username}!`,
+                token
+            });
+        } else {
+            res.status(401).json({ message: 'Invalid or nonexistent token'});
+        }
+    })
+    .catch(err => {
+        res.status(500).json(err)
+    })
+})
 
 function makeToken(user) {
     const payload = {
