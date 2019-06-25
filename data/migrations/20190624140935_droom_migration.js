@@ -5,12 +5,12 @@ exports.up = function(knex, Promise) {
         tbl.string('password').notNullable();
         tbl.boolean('is_employer').notNullable().defaultTo('false');
         tbl.string('first_name').notNullable()
-        tbl.string('last_name').notNullable()
-        tbl.string('email').notNullable().unique()
+        tbl.string('last_name');
+        tbl.string('email').notNullable().unique();
         tbl.string('about');
         tbl.string('phone');
-        tbl.string('linkedIn');
-        tbl.string('github');
+        tbl.string('linkedIn').unique();
+        tbl.string('github').unique();
         tbl.string('website');
         tbl.string('location');
         tbl.string('position');
@@ -21,7 +21,7 @@ exports.up = function(knex, Promise) {
         tbl.string('portfolio');
         tbl.string('references');
         tbl.timestamp('timestamp');
-        // linking niche to user
+        // linking user to niche
         tbl
         .integer('niche_id')
         .unsigned()
@@ -39,14 +39,15 @@ exports.up = function(knex, Promise) {
 
     .createTable('jobs', tbl => {
         tbl.increments();
-        tbl.string('job_title');
+        tbl.string('job_title').notNullable();
+        tbl.string('job_company').notNullable();
         tbl.string('start_date');
         tbl.string('job_type');
         tbl.string('starting_pay');
         tbl.string('description');
         tbl.string('responsibilities');
         tbl.string('required_skills')
-        // linking niche to job
+        // linking job to niche
         tbl
         .integer('niche_id')
         .unsigned()
@@ -56,8 +57,6 @@ exports.up = function(knex, Promise) {
         .onDelete('CASCADE')
         .onUpdate('CASCADE')
         tbl.boolean('seen').defaultTo('false')
-
-
     })
 };
 
