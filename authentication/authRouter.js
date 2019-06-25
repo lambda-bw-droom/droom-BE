@@ -15,11 +15,11 @@ router.post('/register', (req, res) => {
     console.log(user)
     AuthModel.addUser({ 
         //whitelisting 
-        first_name: user.first_name, 
-        last_name: user.last_name,
-        email: user.email,
-        password: user.password,
-        is_employer: user.is_employer
+        // first_name: user.first_name, 
+        // last_name: user.last_name,
+        // email: user.email,
+        // password: user.password,
+        // is_employer: user.is_employer
      })
      .then(saved => {
          const token = makeToken(user)
