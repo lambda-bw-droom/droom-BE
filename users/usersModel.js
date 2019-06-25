@@ -3,13 +3,13 @@ const db = require('../data/dbConfig')
 
 module.exports = {
     getUserById,
-    getUser
+    getUsers
 }
 
 function getUserById(id) {
     return db('users').where( {id} ).first();
 }
 
-function getUser() {
+function getUsers() {
     return db('users').select('id', 'username')
 }

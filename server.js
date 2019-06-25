@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const authRouter = require('./authentication/authRouter.js')
+const usersRouter = require('./users/usersRouter.js')
 
 const server = express();
 
@@ -14,5 +15,6 @@ server.get('/', (req, res) => {
 });
 
 server.use('/auth', authRouter)
+server.use('/users', usersRouter)
 
 module.exports = server;
