@@ -6,12 +6,12 @@ const AuthModel = require('./authModel.js')
 
 router.post('/register', (req, res) => {
     let user = req.body;
-    if(!user.password && !user.username) {
+    if(!user.password || !user.username) {
         return res.status(400).json({error: 'Requires both username and password for register'})
     }
     const hash = bcrypt.hashSync(user.password, 10)
     user.password = hash;
-
+    console.log(user)
     AuthModel.addUser({ 
         //whitelisting 
         username: user.username, 
@@ -25,8 +25,9 @@ router.post('/register', (req, res) => {
          })
      })
      .catch(err => {
+         console.log(err)
          res.status(500).json({
-             error: 'Internal server error'
+             error: '500 error'
          })
      })
 

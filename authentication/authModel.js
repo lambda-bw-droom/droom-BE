@@ -15,5 +15,5 @@ function findBy(filter) {
 async function addUser(user) {
     // Postgres syntax ------->
     const [ids] = await db('users').insert(user, ['id']);
-    return findById(ids.id);
+    return findBy({id: ids.id});
 }
