@@ -15,6 +15,23 @@ router.get('/', (req, res) => {
     })
 });
 
+server.get('/:id', (req, res) => {
+    const id = req.params.id;
+
+    UsersModel.getUserById(id)
+    .then(user => {
+        if (user) {
+            res.status(200).json(user)
+        } else {
+            res.status(400).json({errorMessage: 'Specified user does not exist.'})
+        }
+    })
+    .catch(err => {
+        console.log(err)
+        res.status(500).json('internal server error')
+    })
+});
+
 
 
 
