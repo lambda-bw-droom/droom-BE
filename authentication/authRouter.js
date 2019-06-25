@@ -30,8 +30,6 @@ router.post('/register', (req, res) => {
          })
      })
 
-
-
 });
 
 function makeToken(user) {
@@ -45,3 +43,5 @@ function makeToken(user) {
 
    return jwt.sign(payload, secrets.jwtSecret, options)
 }
+
+module.exports = router;
