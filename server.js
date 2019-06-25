@@ -3,7 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const authRouter = require('./authentication/authRouter.js')
 const usersRouter = require('./users/usersRouter.js')
-const restrict = require('../authorization.js')
+const restrict = require('./authorization')
 const server = express();
 
 server.use(helmet());
