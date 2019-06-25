@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
         tbl.increments();
         tbl.string('niche').notNullable();
     }) 
-    
+
     .createTable('users', tbl => {
         tbl.increments();
         tbl.string('username').notNullable().unique();
@@ -25,7 +25,7 @@ exports.up = function(knex, Promise) {
         tbl.string('skills');
         tbl.string('portfolio');
         tbl.string('references');
-        tbl.timestamp('timestamp');
+        tbl.timestamp('created_at').defaultTo(knex.fn.now());
         // linking user to niche
         tbl
         .integer('niche_id')

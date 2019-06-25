@@ -24,7 +24,6 @@ exports.seed = function(knex, Promise) {
           skills: 'Front end, back end, and more',
           portfolio: 'johnseeker.com',
           references: 'Sam, Joe, Bob',
-          timestamp: Date.now(),
           niche_id: 8
         },
         {
@@ -39,7 +38,6 @@ exports.seed = function(knex, Promise) {
           linkedIn: 'linkedin.com/companyx',
           github: 'github.com/companyx',
           location: 'San Francisco, California',
-          timestamp: Date.now(),
           niche_id: 8
         }
       ]);
