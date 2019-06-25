@@ -33,7 +33,7 @@ exports.up = function(knex, Promise) {
         .notNullable()
         .references('id')
         .inTable('niche')
-        .onDelete('CASCADE')
+        .onDelete('RESTRICT')
         .onUpdate('CASCADE')
     })
 
@@ -54,7 +54,7 @@ exports.up = function(knex, Promise) {
         .notNullable()
         .references('id')
         .inTable('niche')
-        .onDelete('CASCADE')
+        .onDelete('RESTRICT')
         .onUpdate('CASCADE')
         tbl.boolean('seen').defaultTo('false')
     })
