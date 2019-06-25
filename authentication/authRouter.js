@@ -56,6 +56,8 @@ router.post('/login', (req, res) => {
     })
 })
 
+// both functioning!
+
 function makeToken(user) {
     const payload = {
         subject: user.id,
