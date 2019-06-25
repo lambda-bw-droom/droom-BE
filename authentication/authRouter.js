@@ -6,7 +6,7 @@ const AuthModel = require('./authModel.js')
 
 router.post('/register', (req, res) => {
     let user = req.body;
-    if(!user.first_name || !user.last_name || !user.email || !user.password) {
+    if(!user.first_name || !user.last_name || !user.email || !user.password || !user.is_employer) {
         return res.status(400).json({error: 'All fields required'})
     }
     // filter out already register user, "user with username exists"
@@ -18,7 +18,8 @@ router.post('/register', (req, res) => {
         first_name: user.first_name, 
         last_name: user.last_name,
         email: user.email,
-        password: user.password
+        password: user.password,
+        is_employer: user.is_employer
      })
      .then(saved => {
          const token = makeToken(user)
