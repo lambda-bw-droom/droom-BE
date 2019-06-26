@@ -7,9 +7,9 @@ const AuthModel = require('./authModel.js')
 router.post('/register', (req, res) => {
     let user = req.body;
     console.log('req body user', user)
-    if(!user.first_name || !user.last_name || !user.email || !user.password || !user.is_employer) {
-        return res.status(400).json({error: 'All fields required'})
-    }
+    // if(!user.first_name || !user.last_name || !user.email || !user.password || !user.is_employer) {
+    //     return res.status(400).json({error: 'All fields required'})
+    // }
     // filter out already register user, "user with username exists"
     const hash = bcrypt.hashSync(user.password, 10)
     user.password = hash;
