@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const SpecModel = require('./specifiedModel.js');
+const restrict = require('../authorization.js');
 
 router.get('/seekers', restrict, (req, res) => {
     SpecModel.getSeekers()
