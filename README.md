@@ -1,11 +1,9 @@
-# droom-BE
+# droom Back End
 
 # Hosted On Heroku 
 https://droom-backend-bw.herokuapp.com/
 
 # Backend Architect - Cash Globe
-
-
 
 ## Endpoints
 | Method | Endpoint               | Requires                        | Description                                                             |
