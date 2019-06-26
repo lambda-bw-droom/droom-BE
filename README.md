@@ -10,7 +10,7 @@ https://droom-backend-bw.herokuapp.com/
 ## Endpoints
 | Method | Endpoint               | Requires                        | Description                                                             |
 | ------ | ---------------------- | ------------------------------- | ----------------------------------------------------------------------- |
-| POST   | `/auth/register/`      | `username`, `password`,         | Registers a New User to our database. Creates a token.                  |
+| POST   | `/auth/register/`      | `first_name`, `last_name`, `email`, `password`, `is_employer`| Registers a New User to our database. Creates a token.                  |
 | POST   | `/auth/login/`         | `username`, `password`          | Logs a returning user in. Creates a token.           
 | GET   | `/users/`         | `Successful Login`          | Returns All Users
 | GET   | `/users/id`         | `Successful Login`          |  Returns User With Specified Id      
