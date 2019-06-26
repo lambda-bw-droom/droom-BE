@@ -1,17 +1,17 @@
 exports.up = function(knex, Promise) {
     return knex.schema.createTable('niche', tbl => {
         tbl.increments();
-        tbl.string('niche').notNullable();
+        tbl.string('niche');
     }) 
 
     .createTable('users', tbl => {
         tbl.increments();
-        tbl.string('username').notNullable().unique();
-        tbl.string('password').notNullable();
-        tbl.boolean('is_employer').notNullable().defaultTo('false');
-        tbl.string('first_name').notNullable()
+        tbl.string('username').unique();
+        tbl.string('password');
+        tbl.boolean('is_employer').defaultTo('false');
+        tbl.string('first_name')
         tbl.string('last_name');
-        tbl.string('email').notNullable().unique();
+        tbl.string('email').unique();
         tbl.string('about');
         tbl.string('phone');
         tbl.string('linkedIn').unique();
@@ -38,8 +38,8 @@ exports.up = function(knex, Promise) {
 
     .createTable('jobs', tbl => {
         tbl.increments();
-        tbl.string('job_title').notNullable();
-        tbl.string('job_company').notNullable();
+        tbl.string('job_title');
+        tbl.string('job_company');
         tbl.string('start_date');
         tbl.string('job_type');
         tbl.string('starting_pay');
