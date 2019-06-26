@@ -11,9 +11,9 @@ function SpecGetUserById(id) {
 }
 
 function getSeekers() {
-    return db('users').where('is_employer' = false).select('id', 'first_name', 'last_name')
+    return db('users').where({is_employer: false}).select('id', 'first_name', 'last_name')
 }
 
 function getEmployers() {
-    return db('users').where('is_employer' === true).select('id', 'first_name', 'last_name')
+    return db('users').where({is_employer: true}).select('id', 'first_name', 'last_name')
 }
