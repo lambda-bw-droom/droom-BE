@@ -36,7 +36,7 @@ router.get('/seekers/:id', restrict, (req, res) => {
         if (seeker) {
             res.status(200).json(seeker)
         } else {
-            res.status(400).json({errorMessage: 'Specified seeker does not exist.'})
+            res.status(400).json({errorMessage: 'Specified id is either an employer or does not exist.'})
         }
     })
     .catch(err => {
@@ -53,7 +53,7 @@ router.get('/employers/:id', restrict, (req, res) => {
         if (employer) {
             res.status(200).json(employer)
         } else {
-            res.status(400).json({errorMessage: 'Specified employer does not exist.'})
+            res.status(400).json({errorMessage: 'Specified id is either a seeker or does not exist.'})
         }
     })
     .catch(err => {
