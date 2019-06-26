@@ -19,6 +19,6 @@ server.get('/', (req, res) => {
 server.use('/auth', authRouter)
 server.use('/users', usersRouter)
 server.use('/profile', specifiedRouter)
-// server.use('/jobs', jobsRouter)
+server.use('/jobs', jobsRouter)
 
 module.exports = server;

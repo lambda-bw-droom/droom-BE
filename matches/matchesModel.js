@@ -1,23 +1,21 @@
 const db = require('../data/dbConfig')
 
-
 module.exports = {
-    addUser,
+    addMatch,
     findBy
 }
 
 function findBy(filter) {
-    return db('users').where(filter)
+    return db('matches').where(filter)
 }
 
 
-async function addUser(user) {
-    // Postgres syntax ------->
+async function addMatch(job_id, user_id) {
     if(process.env.NODE_ENV === 'production') {
-        const [ids] = await db('users').insert(user, ['id']);
+        const [ids] = await db('matches').insert({job_id, user_id}, ['id']);
         return findBy({id: ids.id});
     } else {
-        const [id] = await db('users').insert(user);
+        const [id] = await db('matches').insert(user);
         return findBy({id: id});
     }
-}
+} 
