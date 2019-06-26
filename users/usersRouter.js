@@ -2,7 +2,7 @@ const router = require("express").Router();
 const UsersModel = require('./usersModel.js');
 const restrict = require('../authorization.js')
 
-router.get('/', (req, res) => {
+router.get('/', restrict, (req, res) => {
     UsersModel.getUsers()
     .then(users => {
         res.status(200).json(users)
@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
     })
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', restrict, (req, res) => {
     const id = req.params.id;
 
     UsersModel.getUserById(id)
