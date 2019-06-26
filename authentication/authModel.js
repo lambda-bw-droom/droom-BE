@@ -13,9 +13,6 @@ function findBy(filter) {
 
 async function addUser(user) {
     // Postgres syntax ------->
-    // const [ids] = await db('users').insert(user, ['id']);
-    // return findBy({id: ids.id});
-
-    const [ids] = await db('users').where({first_name, last_name, email, password, is_employer}).insert(user, ['id']);
+    const [ids] = await db('users').insert(user, ['id']);
     return findBy({id: ids.id});
 }
