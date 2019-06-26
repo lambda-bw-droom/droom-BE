@@ -47,10 +47,10 @@ router.post('/seeker', (req, res) => {
 
 router.delete('/seeker/:id', (req, res) => {
     const {id} = req.params
-    SpecModel.remove(id)
+    SpecModel.removeSeeker(id)
     .then(deleted => {
         if (deleted) {
-            res.status(204).json(`Successfully deleted user with id ${id}`);
+            res.status(204).json(`Successfully deleted seeker with id ${id}`);
         } else {
             res.status(404).json({
                 errorMessage: "The user with the specified ID does not exist."
@@ -109,6 +109,25 @@ router.post('/employer', (req, res) => {
     })
 });
 
+router.delete('/employer/:id', (req, res) => {
+    const {id} = req.params
+    SpecModel.removeEmployer(id)
+    .then(deleted => {
+        if (deleted) {
+            res.status(204).json(`Successfully deleted employer with id ${id}`);
+        } else {
+            res.status(404).json({
+                errorMessage: "The user with the specified ID does not exist."
+            })
+        }
+    })
+    .catch(err => {
+        console.log(err)
+        res.status(500).json({
+            errorMessage: "the user could not be deleted"
+        })
+    })
+});
 
 
 

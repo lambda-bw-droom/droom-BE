@@ -6,7 +6,9 @@ module.exports = {
     getSeekers,
     getEmployers,
     insertEmployers,
-    insertSeekers
+    insertSeekers,
+    removeSeeker,
+    removeEmployer
 }
 
 function getSeekerById(id) {
@@ -34,8 +36,14 @@ function insertSeekers(user) {
     return db('users').where({is_employer: true}).insert(user, 'id')
 }
 
-function remove(id) {
+function removeSeeker(id) {
     return db('users')
-      .where('id', id)
+      .where({is_employer: false, id}, 'id')
+      .del();
+}
+
+function removeEmployer(id) {
+    return db('users')
+      .where({is_employer: true, id}, 'id')
       .del();
 }
