@@ -1,13 +1,18 @@
 const db = require('../data/dbConfig')
 
 module.exports = {
-    SpecGetUserById,
+    getSeekerById,
+    getEmployerById,
     getSeekers,
     getEmployers
 }
 
-function SpecGetUserById(id) {
-    return db('users').where( {id} ).first();
+function getSeekerById(id) {
+    return db('users').where( {id, is_employer: false} ).first();
+}
+
+function getEmployerById(id) {
+    return db('users').where( {id, is_employer: true} ).first();
 }
 
 function getSeekers() {

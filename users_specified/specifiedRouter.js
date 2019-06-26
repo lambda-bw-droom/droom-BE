@@ -23,8 +23,42 @@ router.get('/employers', restrict, (req, res) => {
     .catch(err => {
         console.log(err)
         res.status(500).json({
-            error: 'Error retrieving seekers'
+            error: 'Error retrieving employers'
         })
+    })
+});
+
+router.get('/seekers/:id', restrict, (req, res) => {
+    const id = req.params.id;
+
+    SpecModel.getSeekerById(id)
+    .then(seeker => {
+        if (seeker) {
+            res.status(200).json(seeker)
+        } else {
+            res.status(400).json({errorMessage: 'Specified seeker does not exist.'})
+        }
+    })
+    .catch(err => {
+        console.log(err)
+        res.status(500).json('internal server error')
+    })
+});
+
+router.get('/employers/:id', restrict, (req, res) => {
+    const id = req.params.id;
+
+    SpecModel.getEmployerById(id)
+    .then(employer => {
+        if (employer) {
+            res.status(200).json(employer)
+        } else {
+            res.status(400).json({errorMessage: 'Specified employer does not exist.'})
+        }
+    })
+    .catch(err => {
+        console.log(err)
+        res.status(500).json('internal server error')
     })
 });
 
