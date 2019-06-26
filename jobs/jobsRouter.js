@@ -3,9 +3,9 @@ const Jobs = require('./jobsModel.js');
 const restrict = require('../authorization.js')
 
 
-// router.get('/matches/job/:job_id', (req, res) => {
+router.get('/matches/:user_id', (req, res) => {
     
-// });
+});
 
 
 

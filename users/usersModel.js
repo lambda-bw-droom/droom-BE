@@ -11,5 +11,5 @@ function getUserById(id) {
 }
 
 function getUsers() {
-    return db('users').select('id', 'username')
+    return db('users').select('id', 'email')
 }

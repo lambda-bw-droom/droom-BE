@@ -5,5 +5,13 @@ module.exports = {
 }
 
 function getSeekersByJobId(userId, jobId) {
-    return db('users').where()
+    return db('jobs').where()
+}
+
+function getJobs() {
+    return db('jobs')
+}
+
+function getJobsById() {
+
 }

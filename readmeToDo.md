@@ -19,4 +19,4 @@ GET jobs/matches/seeker
 
 stratch niche 
 
-change login to have email/password
+FINISH AFTER: change login to have email/password

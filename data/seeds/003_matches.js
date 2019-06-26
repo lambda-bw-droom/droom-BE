@@ -7,13 +7,8 @@ exports.seed = function(knex, Promise) {
       return knex('matches').insert([
         { 
           id: 1,
-          user_id: null,
-          job_id: null,
-        },
-        { 
-          id: 2,
-          user_id: null,
-          job_id: null,
+          user_id: 1,
+          job_id: 1,
         }
       ]);
     });

@@ -58,6 +58,9 @@ exports.up = function(knex, Promise) {
         .inTable('jobs')
         .onDelete('RESTRICT')
         .onUpdate('CASCADE')
+
+        tbl.boolean('employer_matched');
+        tbl.timestamp('employer_reviewed_at');
     })
 };
 
