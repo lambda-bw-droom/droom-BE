@@ -17,6 +17,4 @@ router.post('/:job_id/matches', restrict, (req, res) => {
 });
 
 
-
-
 module.exports = router;

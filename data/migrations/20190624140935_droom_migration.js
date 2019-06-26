@@ -20,8 +20,7 @@ exports.up = function(knex, Promise) {
         tbl.string('skills');
         tbl.string('portfolio');
         tbl.string('references');
-        tbl.timestamp('created_at').defaultTo(knex.fn.now());
-        
+        tbl.timestamp('created_at').defaultTo(knex.fn.now()); 
     }) 
 
     .createTable('jobs', tbl => {

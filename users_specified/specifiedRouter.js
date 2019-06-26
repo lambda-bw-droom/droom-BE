@@ -2,6 +2,8 @@ const router = require("express").Router();
 const SpecModel = require('./specifiedModel.js');
 const restrict = require('../authorization.js');
 
+
+// SEEKERS
 router.get('/seekers', restrict, (req, res) => {
     SpecModel.getSeekers()
     .then(seekers => {
@@ -11,19 +13,6 @@ router.get('/seekers', restrict, (req, res) => {
         console.log(err)
         res.status(500).json({
             error: 'Error retrieving seekers'
-        })
-    })
-});
-
-router.get('/employers', restrict, (req, res) => {
-    SpecModel.getEmployers()
-    .then(employers => {
-        res.status(200).json(employers)
-    })
-    .catch(err => {
-        console.log(err)
-        res.status(500).json({
-            error: 'Error retrieving employers'
         })
     })
 });
@@ -45,6 +34,53 @@ router.get('/seekers/:id', restrict, (req, res) => {
     })
 });
 
+router.post('/seeker', (req, res) => {
+    let user = req.body;
+    SpecModel.insertSeekers(user)
+    .then(user => {
+        res.status(201).json(user)
+    })
+    .catch(err => {
+        res.status(500).json({error: 'error saving employer to the database'})
+    })
+});
+
+router.delete('/seeker/:id', (req, res) => {
+    const {id} = req.params
+    SpecModel.remove(id)
+    .then(deleted => {
+        if (deleted) {
+            res.status(204).json(`Successfully deleted user with id ${id}`);
+        } else {
+            res.status(404).json({
+                errorMessage: "The user with the specified ID does not exist."
+            })
+        }
+    })
+    .catch(err => {
+        console.log(err)
+        res.status(500).json({
+            errorMessage: "the user could not be deleted"
+        })
+    })
+});
+
+
+// EMPLOYERS
+router.get('/employers', restrict, (req, res) => {
+    SpecModel.getEmployers()
+    .then(employers => {
+        res.status(200).json(employers)
+    })
+    .catch(err => {
+        console.log(err)
+        res.status(500).json({
+            error: 'Error retrieving employers'
+        })
+    })
+});
+
+
 router.get('/employers/:id', restrict, (req, res) => {
     const id = req.params.id;
 
@@ -61,6 +97,19 @@ router.get('/employers/:id', restrict, (req, res) => {
         res.status(500).json('internal server error')
     })
 });
+
+router.post('/employer', (req, res) => {
+    let user = req.body;
+    SpecModel.insertEmployers(user)
+    .then(user => {
+        res.status(201).json(user)
+    })
+    .catch(err => {
+        res.status(500).json({error: 'error saving employer to the database'})
+    })
+});
+
+
 
 
 module.exports = router;

@@ -4,7 +4,9 @@ module.exports = {
     getSeekerById,
     getEmployerById,
     getSeekers,
-    getEmployers
+    getEmployers,
+    insertEmployers,
+    insertSeekers
 }
 
 function getSeekerById(id) {
@@ -21,4 +23,19 @@ function getSeekers() {
 
 function getEmployers() {
     return db('users').where({is_employer: true}).select('id', 'first_name', 'last_name')
+}
+
+// check if you need different syntax for PG
+function insertEmployers(user) {
+    return db('users').where({is_employer: true}).insert(user, 'id')
+}
+
+function insertSeekers(user) {
+    return db('users').where({is_employer: true}).insert(user, 'id')
+}
+
+function remove(id) {
+    return db('users')
+      .where('id', id)
+      .del();
 }
