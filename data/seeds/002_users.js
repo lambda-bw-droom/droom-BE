@@ -24,7 +24,6 @@ exports.seed = function(knex, Promise) {
           skills: 'Front end, back end, and more',
           portfolio: 'johnseeker.com',
           references: 'Sam, Joe, Bob',
-          niche_id: 8
         },
         {
           username: 'CompanyX',
@@ -38,7 +37,6 @@ exports.seed = function(knex, Promise) {
           linkedIn: 'linkedin.com/companyx',
           github: 'github.com/companyx',
           location: 'San Francisco, California',
-          niche_id: 8
         }
       ]);
     });

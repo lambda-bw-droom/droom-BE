@@ -1,17 +1,18 @@
 exports.up = function(knex, Promise) {
-    return knex.schema.createTable('matches', tbl => {
+    return knex.schema.createTable('jobs', tbl => {
         tbl.increments();
-        tbl.integer('user_id')
-        .references('id')
-        .inTable('users')
-        .onDelete('RESTRICT')
-        .onUpdate('CASCADE')
+        tbl.string('job_title');
+        tbl.string('job_company');
+        tbl.string('start_date');
+        tbl.string('job_type');
+        tbl.string('education');
+        tbl.string('starting_pay');
+        tbl.string('description');
+        tbl.string('responsibilities');
+        tbl.string('required_skills');
+        tbl.string('posted_date');
 
-        tbl.integer('job_id')
-        .references('id')
-        .inTable('jobs')
-        .onDelete('RESTRICT')
-        .onUpdate('CASCADE')
+        tbl.boolean('seen').defaultTo('false')
         
     }) 
 
@@ -37,30 +38,23 @@ exports.up = function(knex, Promise) {
         tbl.string('portfolio');
         tbl.string('references');
         tbl.timestamp('created_at').defaultTo(knex.fn.now());
-        // linking user to niche
-        // tbl
-        // .integer('niche_id')
-        // .unsigned()
-        // .references('id')
-        // .inTable('niche')
-        // .onDelete('RESTRICT')
-        // .onUpdate('CASCADE')
+
+
     })
 
-    .createTable('jobs', tbl => {
+    .createTable('matches', tbl => {
         tbl.increments();
-        tbl.string('job_title');
-        tbl.string('job_company');
-        tbl.string('start_date');
-        tbl.string('job_type');
-        tbl.string('education');
-        tbl.string('starting_pay');
-        tbl.string('description');
-        tbl.string('responsibilities');
-        tbl.string('required_skills');
-        tbl.string('posted_date');
+        tbl.integer('user_id')
+        .references('id')
+        .inTable('users')
+        .onDelete('RESTRICT')
+        .onUpdate('CASCADE')
 
-        tbl.boolean('seen').defaultTo('false')
+        tbl.integer('job_id')
+        .references('id')
+        .inTable('jobs')
+        .onDelete('RESTRICT')
+        .onUpdate('CASCADE')
     })
 };
 
@@ -69,6 +63,6 @@ exports.up = function(knex, Promise) {
 exports.down = function(knex, Promise) {
     return knex.schema
     .dropTableIfExists('users')
-    .dropTableIfExists('niche')
+    .dropTableIfExists('matches')
     .dropTableIfExists('jobs');
 };

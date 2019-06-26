@@ -10,11 +10,12 @@ exports.seed = function(knex, Promise) {
           job_company: 'Company X',
           start_date: 'August 9, 2019',
           job_type: 'Software Development',
+          education: 'Lambda School',
           starting_pay: '$75,000',
           description: 'Helping the Senior devs maintain our application',
           responsibilities: 'Bugs, standups, getting coffee',
           required_skills: 'HTML5, CSS, JavaScript, React',
-          niche_id: 8,
+          posted_date: 'May 1st, 2040',
           seen: false
         }
       ]);
