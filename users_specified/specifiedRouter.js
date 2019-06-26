@@ -50,10 +50,10 @@ router.delete('/seeker/:id', (req, res) => {
     SpecModel.removeSeeker(id)
     .then(deleted => {
         if (deleted) {
-            res.status(204).json(`Successfully deleted seeker with id ${id}`);
+            res.status(200).json(`Successfully deleted seeker with id ${id}`);
         } else {
             res.status(404).json({
-                errorMessage: "The user with the specified ID does not exist."
+                errorMessage: "The seeker with the specified ID does not exist."
             })
         }
     })
@@ -114,7 +114,7 @@ router.delete('/employer/:id', (req, res) => {
     SpecModel.removeEmployer(id)
     .then(deleted => {
         if (deleted) {
-            res.status(204).json(`Successfully deleted employer with id ${id}`);
+            res.status(200).json(`Successfully deleted employer with id ${id}`);
         } else {
             res.status(404).json({
                 errorMessage: "The user with the specified ID does not exist."
