@@ -30,7 +30,6 @@ exports.up = function(knex, Promise) {
         tbl
         .integer('niche_id')
         .unsigned()
-        .notNullable()
         .references('id')
         .inTable('niche')
         .onDelete('RESTRICT')
@@ -51,7 +50,6 @@ exports.up = function(knex, Promise) {
         tbl
         .integer('niche_id')
         .unsigned()
-        .notNullable()
         .references('id')
         .inTable('niche')
         .onDelete('RESTRICT')
