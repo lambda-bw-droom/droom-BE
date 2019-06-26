@@ -1,7 +1,18 @@
 exports.up = function(knex, Promise) {
-    return knex.schema.createTable('niche', tbl => {
+    return knex.schema.createTable('matches', tbl => {
         tbl.increments();
-        tbl.string('niche');
+        tbl.integer('user_id')
+        .references('id')
+        .inTable('users')
+        .onDelete('RESTRICT')
+        .onUpdate('CASCADE')
+
+        tbl.integer('job_id')
+        .references('id')
+        .inTable('jobs')
+        .onDelete('RESTRICT')
+        .onUpdate('CASCADE')
+        
     }) 
 
     .createTable('users', tbl => {
@@ -27,13 +38,13 @@ exports.up = function(knex, Promise) {
         tbl.string('references');
         tbl.timestamp('created_at').defaultTo(knex.fn.now());
         // linking user to niche
-        tbl
-        .integer('niche_id')
-        .unsigned()
-        .references('id')
-        .inTable('niche')
-        .onDelete('RESTRICT')
-        .onUpdate('CASCADE')
+        // tbl
+        // .integer('niche_id')
+        // .unsigned()
+        // .references('id')
+        // .inTable('niche')
+        // .onDelete('RESTRICT')
+        // .onUpdate('CASCADE')
     })
 
     .createTable('jobs', tbl => {
@@ -42,18 +53,13 @@ exports.up = function(knex, Promise) {
         tbl.string('job_company');
         tbl.string('start_date');
         tbl.string('job_type');
+        tbl.string('education');
         tbl.string('starting_pay');
         tbl.string('description');
         tbl.string('responsibilities');
-        tbl.string('required_skills')
-        // linking job to niche
-        tbl
-        .integer('niche_id')
-        .unsigned()
-        .references('id')
-        .inTable('niche')
-        .onDelete('RESTRICT')
-        .onUpdate('CASCADE')
+        tbl.string('required_skills');
+        tbl.string('posted_date');
+
         tbl.boolean('seen').defaultTo('false')
     })
 };
