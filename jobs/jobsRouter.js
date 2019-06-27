@@ -20,7 +20,7 @@ router.put('/:job_id/matches/:id', restrict, (req, res) => {
     const id = req.params.id
     const changes = {}
     if (req.body.employer_matched) changes = req.body.employer_matched
-    if(changes) {
+    if(!changes) {
         return res.status(422).json({errorMessage: 'missing field employer_matched'})
     }
     Matches.updateMatched(id, changes)
