@@ -3,6 +3,7 @@ const Matches = require('../matches/matchesModel');
 const restrict = require('../authorization.js')
 const JobsModel = require('./jobsModel.js')
 
+// its changing user id, not job id
 router.post('/:job_id/matches', restrict, (req, res) => {
     let job_id = req.params.job_id
     let user_id = req.decoded.subject
@@ -17,8 +18,8 @@ router.post('/:job_id/matches', restrict, (req, res) => {
 });
 
 router.put('/:job_id/matches/:id', restrict, (req, res) => {
-    const id = req.params.id
-    const changes = {}
+    let id = req.params.id
+    let changes = {}
     if (req.body.employer_matched) changes = req.body.employer_matched
     if(!changes) {
         return res.status(422).json({errorMessage: 'missing field employer_matched'})
