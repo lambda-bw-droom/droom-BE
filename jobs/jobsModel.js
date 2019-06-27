@@ -38,3 +38,5 @@ function updateJob(id, changes) {
       .where({id}, 'id')
       .update(changes)
   }
+
+  

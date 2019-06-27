@@ -2,7 +2,8 @@ const db = require('../data/dbConfig')
 
 module.exports = {
     addMatch,
-    findBy
+    findBy,
+    updateMatched
 }
 
 function findBy(filter) {
@@ -19,3 +20,9 @@ async function addMatch(job_id, user_id) {
         return findBy({id: id});
     }
 } 
+
+function updateMatched(id, changes) {
+    return db('matches')
+    .where('id', id)
+    .update(changes)
+}
