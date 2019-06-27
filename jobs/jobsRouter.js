@@ -78,4 +78,22 @@ router.delete('/:id', (req, res) => {
     })
 });
 
+router.put('/:id', (req, res) => {
+    const changes = req.body;
+    const {id} = req.params;
+    JobsModel.updateJob(id, changes)
+    .then(updated => {
+        if(updated) {
+            res.status(200).json({updated})
+        } else {
+            res.status(404).json({errorMessage: 'job with specific ID does not exist'})
+        }
+    })
+    .catch(err => {
+        console.error(err)
+        res.status(500).json({error: 'internal server error'})
+    })
+});
+
+
 module.exports = router;

@@ -35,9 +35,9 @@ get[x] get [x]
 3.
 [x] GET | `/jobs` | none | Returns a list of jobs
 [x] GET | `/jobs/:id` | none | Returns job with id
-[] POST | `/jobs` | authorization(token) | returns created job
+[x] POST | `/jobs` | authorization(token) | returns created job
 [] PUT | `/jobs/:id` | authorization(token) | returns updated job
-[] DELETE | `/jobs/:id` | authorization(token) | returns whether or not the job has been deleted
+[x] DELETE | `/jobs/:id` | authorization(token) | returns whether or not the job has been deleted
 
 4.
 [] GET | `/jobs/matches/employer` | authorization(token) | returns list of matches for each job by that employer

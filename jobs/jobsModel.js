@@ -4,7 +4,8 @@ module.exports = {
     getJobs,
     getJobsById,
     insertJob,
-    removeJob
+    removeJob,
+    updateJob
 }
 
 // function getSeekersByJobId(userId, jobId) {
@@ -31,3 +32,9 @@ function removeJob(id) {
       .where({id}, 'id')
       .del();
 }
+
+function updateJob(id, changes) {
+    return db('jobs')
+      .where({id}, 'id')
+      .update(changes)
+  }
