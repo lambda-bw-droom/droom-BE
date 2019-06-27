@@ -28,6 +28,6 @@ function insertJob(job) {
 
 function removeJob(id) {
     return db('jobs')
-      .where(id, 'id')
+      .where({id}, 'id')
       .del();
 }
