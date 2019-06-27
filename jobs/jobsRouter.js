@@ -6,7 +6,9 @@ const JobsModel = require('./jobsModel.js')
 // its changing user id, not job id
 router.post('/:job_id/matches', restrict, (req, res) => {
     let job_id = req.params.job_id
+    console.log('job_id', job_id)
     let user_id = req.decoded.subject
+    console.log('user_id', user_id)
     Matches.addMatch(user_id, job_id)
     .then(match => {
         res.status(201).json(match)
@@ -19,20 +21,13 @@ router.post('/:job_id/matches', restrict, (req, res) => {
 
 router.put('/:job_id/matches/:id', restrict, (req, res) => {
     let id = req.params.id
-    // let changes = {}
-    // if (req.body.employer_matched) changes = req.body.employer_matched
-    // if(!changes) {
-    //     return res.status(422).json({errorMessage: 'missing field employer_matched'})
-    // }
     let changes = req.body;
+    if(!changes.employer_matched) {
+        return res.status(422).json({errorMessage: 'missing field employer_matched'})
+    }
     Matches.updateMatched(id, changes)
-    
     .then(match => {
-        if(!match) {
-            return res.status(422).json({errorMessage: 'missing field employer_matched'})
-        } else {
             res.status(201).json(match)
-        } 
     })
     .catch(err => {
         console.error(err)
@@ -40,7 +35,9 @@ router.put('/:job_id/matches/:id', restrict, (req, res) => {
     })
 });
 
-
+router.get('/matches', (req, res) => {
+    
+});
 
 
 router.get('/', (req, res) => {
