@@ -19,14 +19,20 @@ router.post('/:job_id/matches', restrict, (req, res) => {
 
 router.put('/:job_id/matches/:id', restrict, (req, res) => {
     let id = req.params.id
-    let changes = {}
-    if (req.body.employer_matched) changes = req.body.employer_matched
-    if(!changes) {
-        return res.status(422).json({errorMessage: 'missing field employer_matched'})
-    }
+    // let changes = {}
+    // if (req.body.employer_matched) changes = req.body.employer_matched
+    // if(!changes) {
+    //     return res.status(422).json({errorMessage: 'missing field employer_matched'})
+    // }
+    let changes = req.body;
     Matches.updateMatched(id, changes)
+    
     .then(match => {
-        res.status(201).json(match)
+        if(!match) {
+            return res.status(422).json({errorMessage: 'missing field employer_matched'})
+        } else {
+            res.status(201).json(match)
+        } 
     })
     .catch(err => {
         console.error(err)
