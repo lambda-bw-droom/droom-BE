@@ -52,12 +52,10 @@ function removeEmployer(id) {
 
 function updateSeeker(id, changes) {
     return db('users')
-      .where('id', id)
       .update(changes)
   }
 
 function updateEmployer(id, changes) {
     return db('users')
-      .where('id', id)
       .update(changes)
   }
