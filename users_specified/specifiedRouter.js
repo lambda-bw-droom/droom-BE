@@ -45,6 +45,23 @@ router.post('/seeker', (req, res) => {
     })
 });
 
+router.put('/seeker/:id', (req, res) => {
+    const changes = req.body;
+    const {id} = req.body;
+    SpecModel.updateSeeker(id, changes)
+    .then(updated => {
+        if(updated) {
+            res.status(200).json(updated)
+        } else {
+            res.status(404).json({errorMessage: 'seeker with specific ID does not exist'})
+        }
+    })
+    .catch(err => {
+        console.error(err)
+        res.status(500).json({error: 'internal server error'})
+    })
+});
+
 router.delete('/seeker/:id', (req, res) => {
     const {id} = req.params
     SpecModel.removeSeeker(id)
@@ -106,6 +123,23 @@ router.post('/employer', (req, res) => {
     })
     .catch(err => {
         res.status(500).json({error: 'error saving employer to the database'})
+    })
+});
+
+router.put('/employer/:id', (req, res) => {
+    const changes = req.body;
+    const {id} = req.body;
+    SpecModel.updateEmployer(id, changes)
+    .then(updated => {
+        if(updated) {
+            res.status(200).json(updated)
+        } else {
+            res.status(404).json({errorMessage: 'employer with specific ID does not exist'})
+        }
+    })
+    .catch(err => {
+        console.error(err)
+        res.status(500).json({error: 'internal server error'})
     })
 });
 
