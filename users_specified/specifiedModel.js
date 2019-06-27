@@ -50,12 +50,16 @@ function removeEmployer(id) {
       .del();
 }
 
+
+// Ask Andy .where('id', id)
 function updateSeeker(id, changes) {
     return db('users')
+      .where({is_employer: false, id}, 'id')
       .update(changes)
   }
 
 function updateEmployer(id, changes) {
     return db('users')
+      .where({is_employer: true, id}, 'id')
       .update(changes)
   }

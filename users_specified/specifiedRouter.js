@@ -47,7 +47,7 @@ router.post('/seeker', (req, res) => {
 
 router.put('/seeker/:id', (req, res) => {
     const changes = req.body;
-    const {id} = req.body;
+    const {id} = req.params;
     SpecModel.updateSeeker(id, changes)
     .then(updated => {
         if(updated) {
@@ -61,6 +61,8 @@ router.put('/seeker/:id', (req, res) => {
         res.status(500).json({error: 'internal server error'})
     })
 });
+
+
 
 router.delete('/seeker/:id', (req, res) => {
     const {id} = req.params
@@ -128,7 +130,7 @@ router.post('/employer', (req, res) => {
 
 router.put('/employer/:id', (req, res) => {
     const changes = req.body;
-    const {id} = req.body;
+    const {id} = req.params;
     SpecModel.updateEmployer(id, changes)
     .then(updated => {
         if(updated) {
