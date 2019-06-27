@@ -59,7 +59,7 @@ router.post('/', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-    const {id} = req.params
+    const id = req.params.id
     JobsModel.removeJob(id)
     .then(deleted => {
         if (deleted) {
@@ -73,7 +73,7 @@ router.delete('/:id', (req, res) => {
     .catch(err => {
         console.log(err)
         res.status(500).json({
-            errorMessage: "the user could not be deleted"
+            errorMessage: "the job could not be deleted"
         })
     })
 });
