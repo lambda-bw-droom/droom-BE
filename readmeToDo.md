@@ -33,8 +33,8 @@ get[x] get [x]
 [x] DELETE | `/profile/seeker/:id` | authorization(token) | Returns a message, indicating whether or not the delete succeeded
 
 3.
-[] GET | `/jobs` | none | Returns a list of jobs
-[] GET | `/jobs/:id` | none | Returns job with id
+[x] GET | `/jobs` | none | Returns a list of jobs
+[x] GET | `/jobs/:id` | none | Returns job with id
 [] POST | `/jobs` | authorization(token) | returns created job
 [] PUT | `/jobs/:id` | authorization(token) | returns updated job
 [] DELETE | `/jobs/:id` | authorization(token) | returns whether or not the job has been deleted

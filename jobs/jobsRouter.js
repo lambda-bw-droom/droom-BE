@@ -46,5 +46,36 @@ router.get('/:id', (req, res) => {
     })
 });
 
+router.post('/', (req, res) => {
+    let job = req.body;
+    JobsModel.insertJob(job)
+    .then(job => {
+        res.status(201).json(job)
+    })
+    .catch(err => {
+        console.error(err)
+        res.status(500).json({error: 'error saving job to the database'})
+    })
+});
+
+router.delete('/:id', (req, res) => {
+    const {id} = req.params
+    JobsModel.removeJob(id)
+    .then(deleted => {
+        if (deleted) {
+            res.status(200).json(`Successfully deleted job with id ${id}`);
+        } else {
+            res.status(404).json({
+                errorMessage: "The job with the specified ID does not exist."
+            })
+        }
+    })
+    .catch(err => {
+        console.log(err)
+        res.status(500).json({
+            errorMessage: "the user could not be deleted"
+        })
+    })
+});
 
 module.exports = router;
