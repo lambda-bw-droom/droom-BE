@@ -1,17 +1,20 @@
 const db = require('../data/dbConfig')
 
 module.exports = {
-    getSeekersByJobId
+    getJobs,
+    getJobsById
 }
 
-function getSeekersByJobId(userId, jobId) {
-    return db('jobs').where()
-}
+// function getSeekersByJobId(userId, jobId) {
+//     return db('jobs').where()
+// }
 
 function getJobs() {
-    return db('jobs')
+    return db('jobs');
 }
 
-function getJobsById() {
-
+function getJobsById(id) {
+    return db('jobs')
+    .where('id', id)
+    .first();
 }

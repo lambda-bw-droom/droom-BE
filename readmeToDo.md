@@ -23,13 +23,13 @@ GET jobs/matches/seeker
 1. 
 get [x] get [x]
 [x] POST | `/profile/employer` | authorization(token) | Adds and returns employer’s profile
-[xx] PUT | `/profile/employer/:id` | authorization(token) | Returns updated employer
+[x] PUT | `/profile/employer/:id` | authorization(token) | Returns updated employer
 [x] DELETE | `/profile/employer/:id` | authorization(token) | Returns a message, indicating whether or not the delete succeeded
 
 2. 
 get[x] get [x]
 [x] POST | `/profile/seeker` | authorization(token) | Adds and returns seeker’s profile
-[xx] PUT | `/profile/seeker/:id` | authorization(token) | Returns updated profile
+[x] PUT | `/profile/seeker/:id` | authorization(token) | Returns updated profile
 [x] DELETE | `/profile/seeker/:id` | authorization(token) | Returns a message, indicating whether or not the delete succeeded
 
 3.
