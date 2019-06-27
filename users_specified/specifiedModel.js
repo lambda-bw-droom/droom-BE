@@ -8,7 +8,9 @@ module.exports = {
     insertEmployers,
     insertSeekers,
     removeSeeker,
-    removeEmployer
+    removeEmployer,
+    updateSeeker,
+    updateEmployer
 }
 
 function getSeekerById(id) {
@@ -47,3 +49,16 @@ function removeEmployer(id) {
       .where({is_employer: true, id}, 'id')
       .del();
 }
+
+function updateSeeker(id, changes) {
+    return db('users')
+    .where({is_employer: false, id}, 'id')
+      .update(changes)
+  }
+
+function updateEmployer(id, changes) {
+    return db('users')
+      .where({is_employer: true, id}, 'id')
+      .update(changes)
+      .then(count => (count > 0 ? this.get(id) : null));
+  }
