@@ -41,7 +41,7 @@ router.post('/seeker', (req, res) => {
         res.status(201).json(user)
     })
     .catch(err => {
-        res.status(500).json({error: 'error saving employer to the database'})
+        res.status(500).json({error: 'error saving seeker to the database'})
     })
 });
 

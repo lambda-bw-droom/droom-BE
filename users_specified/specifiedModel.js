@@ -31,11 +31,11 @@ function getEmployers() {
 
 // check if you need different syntax for PG
 function insertEmployers(user) {
-    return db('users').where({is_employer: true}).insert(user, 'id')
+    return db('users').where({is_employer: true}).insert(user, ['id'])
 }
 
 function insertSeekers(user) {
-    return db('users').where({is_employer: true}).insert(user, 'id')
+    return db('users').where({is_employer: true}).insert(user, ['id'])
 }
 
 function removeSeeker(id) {

@@ -36,7 +36,7 @@ get[x] get [x]
 [x] GET | `/jobs` | none | Returns a list of jobs
 [x] GET | `/jobs/:id` | none | Returns job with id
 [x] POST | `/jobs` | authorization(token) | returns created job
-[] PUT | `/jobs/:id` | authorization(token) | returns updated job
+[x] PUT | `/jobs/:id` | authorization(token) | returns updated job
 [x] DELETE | `/jobs/:id` | authorization(token) | returns whether or not the job has been deleted
 
 4.
@@ -44,3 +44,5 @@ get[x] get [x]
 [] GET | `/jobs/matches/seeker` | authorization(token) | returns list of jobs seeker has not seen
 [] GET | `/jobs/matches/job/:job_id` | authorization(token) | returns list of available and confirmed seekers for job_id
 [] GET | `/jobs/employer/:id` | none | returns jobs associated with employer’s id
+
+GET  
