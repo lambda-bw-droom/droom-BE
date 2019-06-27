@@ -52,13 +52,12 @@ function removeEmployer(id) {
 
 function updateSeeker(id, changes) {
     return db('users')
-    .where({is_employer: false, id}, 'id')
+      .where('id', id)
       .update(changes)
   }
 
 function updateEmployer(id, changes) {
     return db('users')
-      .where({is_employer: true, id}, 'id')
+      .where('id', id)
       .update(changes)
-      .then(count => (count > 0 ? this.get(id) : null));
   }

@@ -51,7 +51,7 @@ router.put('/seeker/:id', (req, res) => {
     SpecModel.updateSeeker(id, changes)
     .then(updated => {
         if(updated) {
-            res.status(200).json(updated)
+            res.status(200).json({updated})
         } else {
             res.status(404).json({errorMessage: 'seeker with specific ID does not exist'})
         }
@@ -132,7 +132,7 @@ router.put('/employer/:id', (req, res) => {
     SpecModel.updateEmployer(id, changes)
     .then(updated => {
         if(updated) {
-            res.status(200).json(updated)
+            res.status(200).json({updated})
         } else {
             res.status(404).json({errorMessage: 'employer with specific ID does not exist'})
         }
