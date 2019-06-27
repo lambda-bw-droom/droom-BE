@@ -16,8 +16,8 @@ router.post('/:job_id/matches', restrict, (req, res) => {
     })
 });
 
-router.get('/jobs', (req, res) => {
-    JobsModel.getSeekers()
+router.get('/', (req, res) => {
+    JobsModel.getJobs()
     .then(jobs => {
         res.status(200).json(jobs)
     })
@@ -29,7 +29,7 @@ router.get('/jobs', (req, res) => {
     })
 });
 
-router.get('/jobs/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     const id = req.params.id;
 
     JobsModel.getJobsById(id)
