@@ -11,7 +11,7 @@ function findBy(filter) {
 }
 
 
-async function addMatch(job_id, user_id) {
+async function addMatch(user_id, job_id) {
     if(process.env.NODE_ENV === 'production') {
         const [ids] = await db('matches').insert({job_id, user_id}, ['id']);
         return findBy({id: ids.id});
