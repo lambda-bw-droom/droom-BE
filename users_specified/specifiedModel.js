@@ -9,7 +9,7 @@ module.exports = {
     insertSeekers,
     removeSeeker,
     removeEmployer,
-    updateSeeker,
+    update,
     updateEmployer
 }
 
@@ -52,14 +52,14 @@ function removeEmployer(id) {
 
 
 // Ask Andy .where('id', id)
-function updateSeeker(id, changes) {
+function update(id, changes) {
     return db('users')
-      .where({is_employer: false, id}, 'id')
+      .where({id}, 'id')
       .update(changes)
   }
 
-function updateEmployer(id, changes) {
-    return db('users')
-      .where({is_employer: true, id}, 'id')
-      .update(changes)
-  }
+// function updateEmployer(id, changes) {
+//     return db('users')
+//       .where({is_employer: true, id}, 'id')
+//       .update(changes)
+//   }

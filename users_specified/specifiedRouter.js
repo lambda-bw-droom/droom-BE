@@ -2,6 +2,23 @@ const router = require("express").Router();
 const SpecModel = require('./specifiedModel.js');
 const restrict = require('../authorization.js');
 
+// UPDATE USERS
+router.put('/:id', (req, res) => {
+    const changes = req.body;
+    const {id} = req.params;
+    SpecModel.update(id, changes)
+    .then(updated => {
+        if(updated) {
+            res.status(200).json({updated})
+        } else {
+            res.status(404).json({errorMessage: 'seeker or employer with specific ID does not exist'})
+        }
+    })
+    .catch(err => {
+        console.error(err)
+        res.status(500).json({error: 'internal server error'})
+    })
+});
 
 // SEEKERS
 router.get('/seekers', restrict, (req, res) => {
@@ -45,22 +62,24 @@ router.post('/seeker', (req, res) => {
     })
 });
 
-router.put('/seeker/:id', (req, res) => {
-    const changes = req.body;
-    const {id} = req.params;
-    SpecModel.updateSeeker(id, changes)
-    .then(updated => {
-        if(updated) {
-            res.status(200).json({updated})
-        } else {
-            res.status(404).json({errorMessage: 'seeker with specific ID does not exist'})
-        }
-    })
-    .catch(err => {
-        console.error(err)
-        res.status(500).json({error: 'internal server error'})
-    })
-});
+
+
+// router.put('/employer/:id', (req, res) => {
+//     const changes = req.body;
+//     const {id} = req.params;
+//     SpecModel.updateEmployer(id, changes)
+//     .then(updated => {
+//         if(updated) {
+//             res.status(200).json({updated})
+//         } else {
+//             res.status(404).json({errorMessage: 'employer with specific ID does not exist'})
+//         }
+//     })
+//     .catch(err => {
+//         console.error(err)
+//         res.status(500).json({error: 'internal server error'})
+//     })
+// });
 
 
 
@@ -128,22 +147,7 @@ router.post('/employer', (req, res) => {
     })
 });
 
-router.put('/employer/:id', (req, res) => {
-    const changes = req.body;
-    const {id} = req.params;
-    SpecModel.updateEmployer(id, changes)
-    .then(updated => {
-        if(updated) {
-            res.status(200).json({updated})
-        } else {
-            res.status(404).json({errorMessage: 'employer with specific ID does not exist'})
-        }
-    })
-    .catch(err => {
-        console.error(err)
-        res.status(500).json({error: 'internal server error'})
-    })
-});
+
 
 router.delete('/employer/:id', (req, res) => {
     const {id} = req.params
