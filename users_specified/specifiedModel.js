@@ -9,8 +9,7 @@ module.exports = {
     insertSeekers,
     removeSeeker,
     removeEmployer,
-    update,
-    updateEmployer
+    update
 }
 
 function getSeekerById(id) {
