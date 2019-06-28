@@ -3,7 +3,8 @@ const db = require('../data/dbConfig')
 module.exports = {
     addMatch,
     findBy,
-    updateMatched
+    updateMatched,
+    getMatches
 }
 
 function findBy(filter) {
@@ -26,3 +27,12 @@ function updateMatched(id, changes) {
     .where('id', id)
     .update(changes)
 }
+
+function getMatches(id, jwt) {
+    return db('matches')
+    .where(id === jwt)
+}
+
+      // just need user id 
+    // select all from matches where user_id === decoded id from jwt
+    // and where reviewed at === null 

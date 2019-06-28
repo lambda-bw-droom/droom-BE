@@ -36,10 +36,18 @@ router.put('/:job_id/matches/:id', restrict, (req, res) => {
     })
 });
 
-/* router.get('/matches', (req, res) => {
-        
+    router.get('/matches/:id', restrict, (req, res) => {
+       const id = req.params.id  
+       const jwt = req.decoded.subject   
+        Matches.getMatches(id, jwt)
+        .then(matches => {
+            res.status(200).json(matches)
+        })
+        .catch(err => {
+            res.status(500).json({errorMessage: "internal server error"})
+        })
     });
-*/
+
     // just need user id 
     // select all from matches where user_id === decoded id from jwt
     // and where reviewed at === null 
