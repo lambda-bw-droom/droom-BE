@@ -50,14 +50,6 @@ router.put('/:job_id/matches/:id', restrict, (req, res) => {
         })
     });
 
-    // just need user id 
-    // select all from matches where user_id === decoded id from jwt
-    // and where reviewed at === null 
-
-// user be able to message a match 
-// messages table, both seeker_id, employer_id
-// string for message, POST for message 
-
 //Test Done
 router.get('/', restrict, (req, res) => {
     JobsModel.getJobs()
