@@ -25,6 +25,7 @@ router.put('/:job_id/matches/:id', restrict, (req, res) => {
     if(!changes.employer_matched) {
         return res.status(422).json({errorMessage: 'missing field employer_matched'})
     }
+    changes.employer_reviewed_at = new Date()
     Matches.updateMatched(id, changes)
     .then(match => {
             res.status(201).json(match)
@@ -35,9 +36,17 @@ router.put('/:job_id/matches/:id', restrict, (req, res) => {
     })
 });
 
-router.get('/matches', (req, res) => {
-    
-});
+/* router.get('/matches', (req, res) => {
+        
+    });
+*/
+    // just need user id 
+    // select all from matches where user_id === decoded id from jwt
+    // and where reviewed at === null 
+
+// user be able to message a match 
+// messages table, both seeker_id, employer_id
+// string for message, POST for message 
 
 
 router.get('/', (req, res) => {
