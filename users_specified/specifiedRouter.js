@@ -34,7 +34,7 @@ router.get('/seekers', restrict, (req, res) => {
         })
     })
 });
-
+// Tests done
 router.get('/seekers/:id', restrict, (req, res) => {
     const id = req.params.id;
 
@@ -86,6 +86,7 @@ router.delete('/seeker/:id', (req, res) => {
 
 
 // EMPLOYERS
+//Tests Done
 router.get('/employers', restrict, (req, res) => {
     SpecModel.getEmployers()
     .then(employers => {
@@ -99,7 +100,7 @@ router.get('/employers', restrict, (req, res) => {
     })
 });
 
-
+//Tests Done
 router.get('/employers/:id', restrict, (req, res) => {
     const id = req.params.id;
 

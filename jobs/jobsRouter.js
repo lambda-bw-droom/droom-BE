@@ -48,7 +48,7 @@ router.put('/:job_id/matches/:id', restrict, (req, res) => {
 // messages table, both seeker_id, employer_id
 // string for message, POST for message 
 
-
+//Test Done
 router.get('/', restrict, (req, res) => {
     JobsModel.getJobs()
     .then(jobs => {
@@ -61,7 +61,7 @@ router.get('/', restrict, (req, res) => {
         })
     })
 });
-
+//Test Done
 router.get('/:id', restrict, (req, res) => {
     const id = req.params.id;
 
@@ -78,7 +78,7 @@ router.get('/:id', restrict, (req, res) => {
         res.status(500).json('internal server error')
     })
 });
-
+// Test Done
 router.post('/', restrict, (req, res) => {
     let job = req.body;
     JobsModel.insertJob(job)
@@ -90,13 +90,13 @@ router.post('/', restrict, (req, res) => {
         res.status(500).json({error: 'error saving job to the database'})
     })
 });
-
+//Test Done
 router.delete('/:id', restrict, (req, res) => {
     const id = req.params.id
     JobsModel.removeJob(id)
     .then(deleted => {
         if (deleted) {
-            res.status(200).json(`Successfully deleted job with id ${id}`);
+            res.status(200).json(`Successfully deleted job with specified id`);
         } else {
             res.status(404).json({
                 errorMessage: "The job with the specified ID does not exist."
