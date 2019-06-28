@@ -39,13 +39,18 @@ router.put('/:job_id/matches/:id', restrict, (req, res) => {
     router.get('/matches/:id', restrict, (req, res) => {
        const id = req.params.id  
        const jwt = req.decoded.subject   
-        Matches.getMatches(id, jwt)
+       if(jwt === id) {
+        Matches.getMatchesById(id)
         .then(matches => {
             res.status(200).json(matches)
         })
         .catch(err => {
             res.status(500).json({errorMessage: "internal server error"})
         })
+       } else {
+           res.status(400).json({errorMessage: 'user_id must equal matches id'})
+       }
+
     });
 
     // just need user id 

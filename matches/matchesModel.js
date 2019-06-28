@@ -4,7 +4,8 @@ module.exports = {
     addMatch,
     findBy,
     updateMatched,
-    getMatches
+    getMatches,
+    getMatchesById
 }
 
 function findBy(filter) {
@@ -28,8 +29,9 @@ function updateMatched(id, changes) {
     .update(changes)
 }
 
-function getMatches() {
-    return db('matches');
+function getMatchesById(id) {
+    return db('matches')
+    .where('id', id)
 }
 
       // just need user id 
