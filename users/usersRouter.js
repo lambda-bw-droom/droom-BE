@@ -2,6 +2,7 @@ const router = require("express").Router();
 const UsersModel = require('./usersModel.js');
 const restrict = require('../authorization.js')
 
+//Test done
 router.get('/', restrict, (req, res) => {
     UsersModel.getUsers()
     .then(users => {
@@ -14,7 +15,7 @@ router.get('/', restrict, (req, res) => {
         })
     })
 });
-
+//Test done
 router.get('/:id', restrict, (req, res) => {
     const id = req.params.id;
 

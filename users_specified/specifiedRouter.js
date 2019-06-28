@@ -21,6 +21,7 @@ router.put('/:id', (req, res) => {
 });
 
 // SEEKERS
+//Tests done
 router.get('/seekers', restrict, (req, res) => {
     SpecModel.getSeekers()
     .then(seekers => {
@@ -61,26 +62,6 @@ router.post('/seeker', (req, res) => {
         res.status(500).json({error: 'error saving seeker to the database'})
     })
 });
-
-
-
-// router.put('/employer/:id', (req, res) => {
-//     const changes = req.body;
-//     const {id} = req.params;
-//     SpecModel.updateEmployer(id, changes)
-//     .then(updated => {
-//         if(updated) {
-//             res.status(200).json({updated})
-//         } else {
-//             res.status(404).json({errorMessage: 'employer with specific ID does not exist'})
-//         }
-//     })
-//     .catch(err => {
-//         console.error(err)
-//         res.status(500).json({error: 'internal server error'})
-//     })
-// });
-
 
 
 router.delete('/seeker/:id', (req, res) => {

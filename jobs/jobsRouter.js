@@ -49,7 +49,7 @@ router.put('/:job_id/matches/:id', restrict, (req, res) => {
 // string for message, POST for message 
 
 
-router.get('/', (req, res) => {
+router.get('/', restrict, (req, res) => {
     JobsModel.getJobs()
     .then(jobs => {
         res.status(200).json(jobs)
@@ -62,7 +62,7 @@ router.get('/', (req, res) => {
     })
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', restrict, (req, res) => {
     const id = req.params.id;
 
     JobsModel.getJobsById(id)
@@ -79,7 +79,7 @@ router.get('/:id', (req, res) => {
     })
 });
 
-router.post('/', (req, res) => {
+router.post('/', restrict, (req, res) => {
     let job = req.body;
     JobsModel.insertJob(job)
     .then(job => {
@@ -91,7 +91,7 @@ router.post('/', (req, res) => {
     })
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', restrict, (req, res) => {
     const id = req.params.id
     JobsModel.removeJob(id)
     .then(deleted => {
@@ -111,7 +111,7 @@ router.delete('/:id', (req, res) => {
     })
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', restrict, (req, res) => {
     const changes = req.body;
     const {id} = req.params;
     JobsModel.updateJob(id, changes)

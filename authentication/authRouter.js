@@ -4,6 +4,8 @@ const jwt = require('jsonwebtoken');
 const secrets = require('../configSecrets/secret.js')
 const AuthModel = require('./authModel.js')
 
+
+//Test Done
 router.post('/register', (req, res) => {
     let user = req.body;
     console.log('req body user', user)
@@ -29,7 +31,7 @@ router.post('/register', (req, res) => {
      })
 
 });
-
+// Test Done
 router.post('/login', (req, res) => {
     let {email, password} = req.body;
 
@@ -46,7 +48,7 @@ router.post('/login', (req, res) => {
                 token
             });
         } else {
-            res.status(401).json({ message: 'Invalid or nonexistent token'});
+            res.status(401).json({ message: 'Check email and password fields'});
         }
     })
     .catch(err => {
