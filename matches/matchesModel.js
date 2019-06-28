@@ -28,9 +28,9 @@ function updateMatched(id, changes) {
     .update(changes)
 }
 
-function getMatchesById(id) {
+function getMatchesById(id, user_id) {
     return db('matches')
-    .where('id', id)
+    .where(id === user_id)
 }
 
       // just need user id 
