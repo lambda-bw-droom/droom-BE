@@ -28,9 +28,8 @@ function updateMatched(id, changes) {
     .update(changes)
 }
 
-function getMatches(id, jwt) {
-    return db('matches')
-    .where(id === jwt)
+function getMatches() {
+    return db('matches');
 }
 
       // just need user id 
