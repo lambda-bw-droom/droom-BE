@@ -27,5 +27,5 @@ POST | `/jobs` | authorization(token) | creates new job
 PUT | `/jobs/:id` | authorization(token) | updates job
 DELETE | `/jobs/:id` | authorization(token) | deletes job
 POST | `jobs/:jobs_id/matches` | authorization(token) | Creates a matched instance for user
-POST | `/:job_id/matches/:id` | authorization(token), employer_matched field | Updates matched instance to have employer_matched field
-GET | `/matches/:id'` | authorization(token)| Returns matches for user
+PUT | `/:job_id/matches/:id` | authorization(token), employer_matched field | Updates matched instance to have employer_matched field
+GET | `/matches/:id` | authorization(token)| Returns matches for user
