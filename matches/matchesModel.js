@@ -4,7 +4,6 @@ module.exports = {
     addMatch,
     findBy,
     updateMatched,
-    getMatches,
     getMatchesById
 }
 
