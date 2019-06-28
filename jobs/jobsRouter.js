@@ -38,7 +38,9 @@ router.put('/:job_id/matches/:id', restrict, (req, res) => {
 
     router.get('/matches/:id', restrict, (req, res) => {
        const id = req.params.id  
-       const jwt = req.decoded.subject   
+       console.log('id', id)
+       const jwt = req.decoded.subject 
+       console.log('jwt', jwt)  
        if(jwt === id) {
         Matches.getMatchesById(id)
         .then(matches => {
